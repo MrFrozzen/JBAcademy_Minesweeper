@@ -1,0 +1,67 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: val numbers = // put your code here
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7866#comment
+status: Failed
+feedback:
+  message: |
+    Compilation error
+    main.kt:2:1: error: expecting a top level declaration
+    numbers[0] = 1
+    ^
+    main.kt:2:8: error: expecting a top level declaration
+    numbers[0] = 1
+           ^
+    main.kt:2:9: error: expecting a top level declaration
+    numbers[0] = 1
+            ^
+    main.kt:2:10: error: expecting a top level declaration
+    numbers[0] = 1
+             ^
+    main.kt:2:12: error: expecting a top level declaration
+    numbers[0] = 1
+               ^
+    main.kt:2:14: error: expecting a top level declaration
+    numbers[0] = 1
+                 ^
+    main.kt:3:1: error: expecting a top level declaration
+    numbers[9] = 10
+    ^
+    main.kt:3:8: error: expecting a top level declaration
+    numbers[9] = 10
+           ^
+    main.kt:3:9: error: expecting a top level declaration
+    numbers[9] = 10
+            ^
+    main.kt:3:10: error: expecting a top level declaration
+    numbers[9] = 10
+             ^
+    main.kt:3:12: error: expecting a top level declaration
+    numbers[9] = 10
+               ^
+    main.kt:3:14: error: expecting a top level declaration
+    numbers[9] = 10
+                 ^
+    main.kt:4:1: error: expecting a top level declaration
+    numbers[99] = 100
+    ^
+    main.kt:4:8: error: expecting a top level declaration
+    numbers[99] = 100
+           ^
+    main.kt:4:9: error: expecting a top level declaration
+    numbers[99] = 100
+            ^
+    main.kt:4:11: error: expecting a top level declaration
+    numbers[99] = 100
+              ^
+    main.kt:4:13: error: expecting a top level declaration
+    numbers[99] = 100
+                ^
+    main.kt:4:15: error: expecting a top level declaration
+    numbers[99] = 100
+                  ^
+  time: Wed, 24 Nov 2021 15:56:00 UTC
+record: -1

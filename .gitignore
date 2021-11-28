@@ -1,0 +1,81 @@
+# Project exclude paths
+/.gradle/
+/Topics/Arrays/Swap elements/out/
+/Topics/Arrays/Swap elements/out/production/classes/
+/Topics/Characters/Previous character/out/
+/Topics/Characters/Previous character/out/production/classes/
+/Topics/Characters/Sequence/out/
+/Topics/Characters/Sequence/out/production/classes/
+/Topics/For loop and arrays/Check the numbers/out/
+/Topics/For loop and arrays/Check the numbers/out/production/classes/
+/Topics/For loop and arrays/Cyclically shifting elements/out/
+/Topics/For loop and arrays/Cyclically shifting elements/out/production/classes/
+/Topics/For loop and arrays/Find the max/out/
+/Topics/For loop and arrays/Find the max/out/production/classes/
+/Topics/For loop and arrays/Is it here/out/
+/Topics/For loop and arrays/Is it here/out/production/classes/
+/Topics/For loop and arrays/Triples/out/
+/Topics/For loop and arrays/Triples/out/production/classes/
+/Topics/For loop and ranges/Count the numbers/out/
+/Topics/For loop and ranges/Count the numbers/out/production/classes/
+/Topics/For loop and ranges/Fizz Buzz/out/
+/Topics/For loop and ranges/Fizz Buzz/out/production/classes/
+/Topics/For loop and ranges/The minimum value of N numbers/out/
+/Topics/For loop and ranges/The minimum value of N numbers/out/production/classes/
+/Topics/For loop and ranges/The sum of integers from a to b/out/
+/Topics/For loop and ranges/The sum of integers from a to b/out/production/classes/
+/Topics/For loop and ranges/The sum of N numbers/out/
+/Topics/For loop and ranges/The sum of N numbers/out/production/classes/
+/Topics/If expression/Odd or even/out/
+/Topics/If expression/Odd or even/out/production/classes/
+/Topics/If expression/Positive, Negative or Zero/out/
+/Topics/If expression/Positive, Negative or Zero/out/production/classes/
+/Topics/If expression/The max of three numbers/out/
+/Topics/If expression/The max of three numbers/out/production/classes/
+/Topics/If expression/Triangle/out/
+/Topics/If expression/Triangle/out/production/classes/
+/Topics/Integers in action/The sum of digits/out/
+/Topics/Integers in action/The sum of digits/out/production/classes/
+/Topics/Multi-dimensional array/Accordance/out/
+/Topics/Multi-dimensional array/Accordance/out/production/classes/
+/Topics/Multi-dimensional array/Corners/out/
+/Topics/Multi-dimensional array/Corners/out/production/classes/
+/Topics/Multi-dimensional array/Kotlin arrays/out/
+/Topics/Multi-dimensional array/Kotlin arrays/out/production/classes/
+/Topics/Multi-dimensional array/Shapeshifter/out/
+/Topics/Multi-dimensional array/Shapeshifter/out/production/classes/
+/Topics/Relational operators/Check the sum/out/
+/Topics/Relational operators/Check the sum/out/production/classes/
+/Topics/Repeating blocks/Maximum element divisible by 4/out/
+/Topics/Repeating blocks/Maximum element divisible by 4/out/production/classes/
+/Topics/Working with strings/N-th symbol/out/
+/Topics/Working with strings/N-th symbol/out/production/classes/
+/Topics/Working with strings/The information about a person/out/
+/Topics/Working with strings/The information about a person/out/production/classes/
+/Topics/Working with strings/The number of tens/out/
+/Topics/Working with strings/The number of tens/out/production/classes/
+/Topics/Working with strings/The same line/out/
+/Topics/Working with strings/The same line/out/production/classes/
+/Topics/Working with strings/Theory/build/
+# Project exclude paths
+/Minesweeper/task/build/
+/Topics/Declaring functions/Vowel or not/out/
+/Topics/Declaring functions/Vowel or not/out/production/classes/
+/Topics/For loop and arrays/Individual taxes/out/
+/Topics/For loop and arrays/Individual taxes/out/production/classes/
+/Topics/For loop and lists/Number in a set/out/
+/Topics/For loop and lists/Number in a set/out/production/classes/
+/Topics/For loop and ranges/The product of numbers from a to b/out/
+/Topics/For loop and ranges/The product of numbers from a to b/out/production/classes/
+/Topics/If expression/Leap year/out/
+/Topics/If expression/Leap year/out/production/classes/
+/Topics/Multi-dimensional list/Kotlin lists/out/
+/Topics/Multi-dimensional list/Kotlin lists/out/production/classes/
+/Topics/Mutable list/Initializing a list/out/
+/Topics/Mutable list/Initializing a list/out/production/classes/
+/Topics/Relational operators/Boys in the sport class/out/
+/Topics/Relational operators/Boys in the sport class/out/production/classes/
+/Topics/When expression/String processor/out/
+/Topics/When expression/String processor/out/production/classes/
+/Topics/Work with MutableLists/Playing with numbers/out/
+/Topics/Work with MutableLists/Playing with numbers/out/production/classes/

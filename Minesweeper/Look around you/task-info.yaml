@@ -1,0 +1,332 @@
+type: edu
+custom_name: stage3
+files:
+- name: src/minesweeper/Main.kt
+  visible: true
+  text: |
+    package minesweeper
+
+    import kotlin.random.Random
+
+    class Miner(val cells: Int) {
+        private val rows = cells // Количество строк
+        private val cols = cells // Количество столбцов
+        private var cntSetX = 0 // Общее количество установленных мин
+        private var cntFreeX = 0 // Общее количество разминированных мин
+
+        val miningCell = "X"
+        val emptyCel = "."
+
+        /**
+         * Инициализация массива рабочей области (минного поля)
+         */
+        private val fieldMap: Array<Array<String>> = Array(rows, { Array(cols, {emptyCel}) })
+
+        /**
+         * Установка мины
+         */
+        fun setMine(row: Int, col: Int): Boolean {
+            if (isEmpty(row, col)) {
+                fieldMap[row-1][col-1] = miningCell
+                ++cntSetX
+                return true
+            } else return false
+        }
+
+        /**
+         *  Инсталяция одной мины
+         */
+        fun instalMine(){
+            var r: Int
+            var c: Int
+            var doIt = true
+            while (doIt && isEmptyCells()) {
+                r = Random.nextInt(1, rows)
+                c = Random.nextInt(1, cells)
+                doIt = !setMine(r, c)
+            }
+        }
+
+        /**
+         *  Установка определенного кол-ва мин
+         */
+        fun initMines(mines: Int) {
+            for (i in 1..mines) {
+                instalMine()
+            }
+        }
+
+        /**
+         * Проверка на незаполненность
+         */
+        fun isEmpty(row: Int, col: Int) = (fieldMap[row-1][col-1] == emptyCel)
+
+        /**
+         * Количество свободных ячеек (возможность установки мины)
+         */
+        fun isEmptyCells() = (rows*cols - cntSetX)>0
+
+        /**
+         * Получение столбца данных
+         */
+        fun getCol(col: Int): String {
+            var out = ""
+            for (r in 1..rows) {
+                out += fieldMap[r-1][col-1]
+            }
+            return out
+        }
+
+        /**
+         * Получение строки данных
+         */
+        fun getRow(row: Int): String {
+            var out = ""
+            for (c in 1..cols) {
+                out += fieldMap[row-1][c-1]
+            }
+            return out
+        }
+
+        /**
+         * Получение правой диагонали
+         */
+        fun getRightDiagonal(): String {
+            var out = ""
+            for (c in 1..cells) {
+                out += fieldMap[c-1][c-1]
+            }
+            return out
+        }
+
+        /**
+         * Получение левой диагонали
+         */
+        fun getLeftDiagonal(): String {
+            var out = ""
+            var c = cells
+            for (r in 1..cells) {
+                out += fieldMap[r-1][--c]
+            }
+            return out
+        }
+
+        /**
+         * Формирование строки из игрового поля данного класса
+         * (в частности - получаем возможность вывода на печать)
+         */
+        override fun toString(): String {
+    //        val border = Array(cols*3, {'-'}).joinToString("")+"\n"
+            var mapString = ""//border
+
+            fieldMap.forEach { row ->
+    //            mapString += "| "
+                row.forEach { c ->
+                    mapString += "$c"
+    //                mapString += "$c "
+                }
+                mapString += "\n"
+    //            mapString += "|\n"
+            }
+
+    //        mapString += border
+
+            return mapString
+        }
+
+        /**
+         * Статистика установленных и разминированных мин
+         */
+        fun statField(){
+            cntSetX = 0
+            fieldMap.forEach { row ->
+                row.forEach { c ->
+                    when (c) {
+                        "X" -> cntSetX++
+                    }
+                }
+            }
+        }
+
+        /**
+         * Ход минера и проверка
+         */
+        fun stepMiners(step: Char): Int {
+            print("Enter the coordinates (${step}): ")
+            val cells = readLine()!!.split(' ')
+
+            val isNumeric = (cells[0].matches("\\d+".toRegex())) &&
+                    (cells[1].matches("\\d+".toRegex()))
+            if (!isNumeric) {
+                return 1    // You should enter numbers!
+            }
+
+            val row = cells[0].toInt()
+            val col = cells[1].toInt()
+
+            if (!(row in 1..rows) || !(col in 1..cols)) {
+                return 2    // Coordinates should be from 1 to side!
+            }
+
+            if (!isEmpty(row, col)) {
+                return 3    // This cell is occupied! Choose another one!
+            }
+
+            if (step == 'X') {
+                setMine(row, col)
+            }
+
+            return 0
+        }
+    }
+
+    fun getInt(str: String): Int {
+        print(str)
+        return readLine()!!.toInt()
+    }
+
+    fun main(args: Array<String>) {
+        val cells = 9
+        val mines = getInt("How many mines do you want on the field? ")
+        val mm = Miner(cells) // Инициализация экземпляра класса с заданной шириной поля
+        mm.initMines(mines)
+        print(mm)
+    }
+  learner_created: false
+- name: test/MinesweeperTest.java
+  visible: false
+  text: |
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
+    import org.hyperskill.hstest.testing.TestedProgram;
+
+    import java.util.*;
+    import java.util.stream.Collectors;
+
+    public class MinesweeperTest extends StageTest<Integer> {
+        @Override
+        public List<TestCase<Integer>> generate() {
+            List<TestCase<Integer>> tests = new ArrayList<>();
+            for (int i = 1; i <= 50; i++) {
+                int mines = i;
+                TestCase<Integer> test = new TestCase<Integer>()
+                    .setDynamicTesting(() -> {
+                        TestedProgram main = new TestedProgram();
+                        main.start();
+                        String output = main.execute("" + mines);
+                        return test(output, mines);
+                    });
+                tests.add(test);
+                tests.add(test);
+            }
+            return tests;
+        }
+
+        public CheckResult test(String reply, Integer attach) {
+            List<String> lines =
+                Arrays.stream(reply.split("\n"))
+                    .map(String::trim)
+                    .collect(Collectors.toList());
+
+            if (lines.isEmpty()) {
+                return CheckResult.wrong(
+                    "Looks like you didn't output a single line!"
+                );
+            }
+
+            if (lines.size() != 9) {
+                return CheckResult.wrong(
+                    "You should output exactly 9 lines of the field. Found: " + lines.size() + "."
+                );
+            }
+
+            int mines = 0;
+
+            for (String line : lines) {
+                if (line.length() != 9) {
+                    return CheckResult.wrong(
+                        "One of the lines of the field doesn't have 9 symbols, " +
+                            "but has " + line.length() + ".\n" +
+                            "This line is \"" + line + "\""
+                    );
+                }
+
+                for (char c : line.toCharArray()) {
+                    if (c != 'X' && c != '.' && !(c >= '0' && c <= '9')) {
+                        return CheckResult.wrong(
+                            "One of the characters is not equal to 'X' or '.' or to a number.\n" +
+                                "In this line: \"" + line + "\"."
+                        );
+                    }
+                    if (c == 'X') {
+                        mines++;
+                    }
+                }
+            }
+
+            if (attach != mines) {
+                return CheckResult.wrong(
+                    "Expected to see " + attach + " mines, found " + mines
+                );
+            }
+
+            int[] around = new int[] {-1, 0, 1};
+
+            for (int y = 0; y < lines.size(); y++) {
+                String line = lines.get(y);
+                for (int x = 0; x < line.length(); x++) {
+                    char c = line.charAt(x);
+
+                    if (c == 'X') {
+                        continue;
+                    }
+
+                    int minesAround = 0;
+
+                    for (int dx : around) {
+                        for (int dy : around) {
+
+                            int newX = x + dx;
+                            int newY = y + dy;
+
+                            if (0 <= newX && newX < 9 &&
+                                0 <= newY && newY < 9) {
+
+                                char newC = lines.get(newY).charAt(newX);
+
+                                if (newC == 'X') {
+                                    minesAround++;
+                                }
+                            }
+                        }
+                    }
+
+                    if (minesAround == 0 && c != '.') {
+                        return CheckResult.wrong(
+                            "There are no mines around, but found number " + c + ".\n" +
+                                "In line " + (y+1) + ", symbol " + (x+1) + "."
+                        );
+                    }
+
+                    if (minesAround != 0 && c != '0' + minesAround) {
+                        return CheckResult.wrong(
+                            "In this cell should be number " + minesAround + ", " +
+                                "but found symbol \"" + c + "\".\n" +
+                                "In line " + (y+1) + ", symbol " + (x+1) + "."
+                        );
+                    }
+
+                }
+            }
+
+            return CheckResult.correct();
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7688#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Wed, 24 Nov 2021 20:53:39 UTC
+record: 2

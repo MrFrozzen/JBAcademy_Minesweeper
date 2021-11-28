@@ -1,0 +1,13 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "var pirateJackSparrow = Sailor(\"None\")\nvar captainJackSparrow = Sailor(\"\
+    None\") \n// put your code here"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/11243#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 24 Jul 2021 21:26:36 UTC
+record: -1
